@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SelfDestruct : MonoBehaviour
 {
-    public Light FlashLight;
+    private Light FlashLight;
     public int DurationTime;
     float counter = 0;
 
     void Start()
     {
-        // FlashLight = GameObject.Find("FlashLight").GetComponent<Light>();
+        FlashLight = this.gameObject.GetComponent<Light>();
     }
 
     void Update()

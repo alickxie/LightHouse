@@ -24,7 +24,7 @@ public class SaveZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // lightRange.decreaseLight = true;
+            lightRange.decreaseLight = true;
         }
     }
 }

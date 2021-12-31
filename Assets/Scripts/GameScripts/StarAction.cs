@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class StarAction : MonoBehaviour
 {
     // Set the variables
     float speed = 5;
     bool wasCollected;
-    Text starNumText;
+    TextMeshProUGUI starNumText;
     public static int starNumValue = 0;
     public LightRange lightRange;
 
     void Start()
     {
         wasCollected = false;
-        starNumText = GameObject.Find("StarNumText").GetComponent<Text>();
+        starNumText = GameObject.Find("StarNumText").GetComponent<TextMeshProUGUI>();
         lightRange = GameObject.Find("LampLight").GetComponent<LightRange>();
     }
 
@@ -38,7 +36,7 @@ public class StarAction : MonoBehaviour
             wasCollected = true;
             lightRange.increaseLight = true;
             starNumValue ++;
-            starNumText.text = starNumValue + "/4";
+            starNumText.text = starNumValue + " / 4";
         }
     }
 }

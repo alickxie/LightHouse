@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ClickSpawn : MonoBehaviour
 {
     public GameObject Cube;
     private int flashNum = 0;
-    Text flashNumText;
+    TextMeshProUGUI flashNumText;
 
     void Start()
     {
-        flashNumText = GameObject.Find("FlashNumText").GetComponent<Text>();
+        flashNumText = GameObject.Find("FlashNumText").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -26,7 +25,7 @@ public class ClickSpawn : MonoBehaviour
             {
                 Instantiate(Cube, new Vector3(worldPosition[0], worldPosition[1] + 10, worldPosition[2]), Quaternion.identity);
                 flashNum++;
-                flashNumText.text = flashNum + "/3";
+                flashNumText.text = flashNum + " / 3";
             }
         }
     }

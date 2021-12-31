@@ -10,6 +10,7 @@ public class LightRange : MonoBehaviour
     // private static LTDescr delay;
     float counter;
     private float decreaseCounter;
+    public TimeBar timeBar;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class LightRange : MonoBehaviour
         decreaseLight = false;
         lightRange = GameObject.Find("LampLight").GetComponent<Light>();
         decreaseCounter = 3f;
+        timeBar.SetMaxLuminosity(161f);
+        timeBar.SetLuminosity(lightRange.innerSpotAngle);
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class LightRange : MonoBehaviour
             if (lightRange.spotAngle <= 179)
             {
                 lightRange.innerSpotAngle += Time.deltaTime * 40;
+                timeBar.SetLuminosity(lightRange.innerSpotAngle);
                 lightRange.spotAngle = lightRange.innerSpotAngle + 17.148f;
             }
 
@@ -35,9 +39,7 @@ public class LightRange : MonoBehaviour
             {
                 counter += Time.deltaTime;
             }
-
             Reset();
-
         }
         else
         {
@@ -46,6 +48,7 @@ public class LightRange : MonoBehaviour
                 if (decreaseCounter >= 0)
                 {
                     lightRange.innerSpotAngle -= Time.deltaTime * 5;
+                    timeBar.SetLuminosity(lightRange.innerSpotAngle);
                     lightRange.spotAngle = lightRange.innerSpotAngle + 17.148f;
                     decreaseCounter = 4f;
                 }

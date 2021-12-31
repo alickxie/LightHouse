@@ -49,11 +49,12 @@
      <Compile Include="Assets\Scripts\GameScripts\LightRange.cs" />
      <Compile Include="Assets\Scripts\GameScripts\InputHandler.cs" />
      <Compile Include="Assets\URPIncludeStuff\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\Scripts\UIScripts\MainMenuAnimation.cs" />
      <Compile Include="Assets\Scripts\GameScripts\SelfDestruct.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ClickSpawn.cs" />
      <Compile Include="Assets\Scripts\UIScripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\GameScripts\Waypoint.cs" />
-     <Compile Include="Assets\Scripts\UIScripts\MainMenuAnimation.cs" />
+     <Compile Include="Assets\Scripts\UIScripts\TimeBar.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -17,6 +17,7 @@ public class ButtonAction : MonoBehaviour
 
     public void Retry()
     {
+        StarAction.starNumValue = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
