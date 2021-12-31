@@ -29,6 +29,12 @@ public class MainMenu : MonoBehaviour
     // When player click play button, jump into games
     public void PlayGame()
     {
+        StartCoroutine(PlayGameTransition());
+    }
+
+    IEnumerator PlayGameTransition()
+    {
+        yield return new WaitForSeconds(1.8f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     
