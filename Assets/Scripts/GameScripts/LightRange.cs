@@ -5,12 +5,13 @@ using UnityEngine;
 public class LightRange : MonoBehaviour
 {
     public Light lightRange;
+    public TimeBar timeBar;
     public bool increaseLight;
     public bool decreaseLight;
-    // private static LTDescr delay;
+    public int increaseMutiplier;
+    public int decreaseMutiplier;
     float counter;
-    private float decreaseCounter;
-    public TimeBar timeBar;
+    float decreaseCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,9 @@ public class LightRange : MonoBehaviour
         {
             if (lightRange.spotAngle <= 179)
             {
-                lightRange.innerSpotAngle += Time.deltaTime * 40;
+                lightRange.innerSpotAngle += Time.deltaTime * increaseMutiplier;
+                lightRange.spotAngle += Time.deltaTime * increaseMutiplier;
                 timeBar.SetLuminosity(lightRange.innerSpotAngle);
-                lightRange.spotAngle = lightRange.innerSpotAngle + 17.148f;
             }
 
             if (counter < 1)
@@ -47,10 +48,10 @@ public class LightRange : MonoBehaviour
             {
                 if (decreaseCounter >= 0)
                 {
-                    lightRange.innerSpotAngle -= Time.deltaTime * 5;
-                    timeBar.SetLuminosity(lightRange.innerSpotAngle);
-                    lightRange.spotAngle = lightRange.innerSpotAngle + 17.148f;
+                    lightRange.innerSpotAngle -= Time.deltaTime * decreaseMutiplier;
+                    lightRange.spotAngle -= Time.deltaTime * decreaseMutiplier;
                     decreaseCounter = 4f;
+                    timeBar.SetLuminosity(lightRange.innerSpotAngle);
                 }
                 decreaseCounter -= Time.deltaTime;
             }

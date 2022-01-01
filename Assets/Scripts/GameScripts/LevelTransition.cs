@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class LevelTransition : MonoBehaviour
 {
     public Animator transition;
+    public Animator textUnderLineTrasition;
     public float transitionTime = 1f;
     public int floorIndex;
     public GameObject floor2Cam;
@@ -50,6 +49,15 @@ public class LevelTransition : MonoBehaviour
             yield return new WaitForSeconds(transitionTime);
 
             FloorName.SetText("Floor -1");
+            if (textUnderLineTrasition.GetBool("Enter"))
+            {
+                textUnderLineTrasition.SetBool("Enter", false);
+            }
+            else
+            {
+                textUnderLineTrasition.SetBool("Enter", true);
+            }
+
             player.transform.localPosition = new Vector3(-3.4f, 0.51f, 24.95f);
             player.transform.localRotation = Quaternion.Euler(0, 0, 0);
             floor0Cam.SetActive(true);
@@ -61,7 +69,16 @@ public class LevelTransition : MonoBehaviour
             transition.SetBool("Transitioning", false);
             yield return new WaitForSeconds(transitionTime);
 
-             FloorName.SetText("Floor 1");
+            FloorName.SetText("Floor 1");
+            if (textUnderLineTrasition.GetBool("Enter"))
+            {
+                textUnderLineTrasition.SetBool("Enter", false);
+            }
+            else
+            {
+                textUnderLineTrasition.SetBool("Enter", true);
+            }
+
             if (second)
             {
                 player.transform.localPosition = new Vector3(3.53f, 0.51f, -3.49f);
@@ -84,6 +101,15 @@ public class LevelTransition : MonoBehaviour
             yield return new WaitForSeconds(transitionTime);
 
             FloorName.SetText("Floor 2");
+            if (textUnderLineTrasition.GetBool("Enter"))
+            {
+                textUnderLineTrasition.SetBool("Enter", false);
+            }
+            else
+            {
+                textUnderLineTrasition.SetBool("Enter", true);
+            }
+            
             player.transform.localPosition = new Vector3(2.09f, 0.51f, -19.03f);
             player.transform.localRotation = Quaternion.Euler(0, 0, 0);
             floor0Cam.SetActive(false);

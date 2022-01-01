@@ -18,10 +18,9 @@ public class TopDownCharacterMover : MonoBehaviour
 
     [SerializeField]
     private Camera Camera;
-
     public Light SpotLight;
-    // public Camera look;
-    // public Vector3 offset;
+    public Animator playerMovement;
+
 
     private void Awake()
     {
@@ -31,9 +30,18 @@ public class TopDownCharacterMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
         var movementVector = MoveTowardTarget(targetVector);
+
+        if (_input.InputVector.x != 0 || _input.InputVector.y != 0)
+        {
+            playerMovement.SetBool("isWalking", true);
+        }
+        else
+        {
+            playerMovement.SetBool("isWalking", false);
+        }
 
         if (!RotateTowardMouse)
         {
@@ -75,7 +83,7 @@ public class TopDownCharacterMover : MonoBehaviour
 
     private void RotateTowardMovementVector(Vector3 movementDirection)
     {
-        if(movementDirection.magnitude == 0) { return; }
+        if (movementDirection.magnitude == 0) { return; }
         var rotation = Quaternion.LookRotation(movementDirection);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, RotationSpeed);
     }

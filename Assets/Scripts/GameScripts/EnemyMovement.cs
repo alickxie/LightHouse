@@ -29,11 +29,15 @@ public class EnemyMovement : MonoBehaviour
     GameObject player;
     public float aggroRadius;
     Light AggroRange;
+    public float agentSpeed;
+
+    public Animator enemyMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = agentSpeed;
         player = GameObject.FindGameObjectWithTag("Player");
         AggroRange = GameObject.Find("AggroRangeLight").GetComponent<Light>();
 
@@ -90,11 +94,12 @@ public class EnemyMovement : MonoBehaviour
             // Instead if we are waiting.
             if (_waiting)
             {
+                enemyMovement.SetBool("isWalking", false);
                 _waitTimer += Time.deltaTime;
                 if (_waitTimer >= _totalWaitTime)
                 {
                     _waiting = false;
-
+                    enemyMovement.SetBool("isWalking", true);
                     ChangePatrolPoint();
                     SetDestination();
                 }
@@ -137,19 +142,4 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-
-    // private void ChaseThePlayer()
-    // {
-    //     Vector3 vectorToTarget = player.transform.position - transform.position;
-    //     float distanceToTarget = vectorToTarget.magnitude;
-
-    //     if (distanceToTarget <= aggroRadius)
-    //     {
-    //         _navMeshAgent.SetDestination(player.transform.position);
-    //     }
-    //     else
-    //     {
-
-    //     }
-    // }
 }
